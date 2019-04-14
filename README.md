@@ -154,4 +154,4 @@ Parser(html,options).then(function(e){
 ## 原理简介 ##
 &emsp;&emsp;该插件结合了`WxParse`中模板循环的方式和`rich-text`组件，对于节点下有`img`, `video`, `a`标签的，使用模板循环的方式显示，否则直接通过`rich-text`组件显示，这样既解决了`WxParse`中过多的标签数（`rich-text`可以节省大量的标签），层数容易不够（对于大于20层的直接用`rich-text`解析，理论上可以显示无限层级），无法解析表格，一些组件显示格式不正确（`rich-text`可以解析出更好的效果）等缺点；也弥补了`rich-text`图片无法预览，无法显示视频，无法复制链接，部分标签不支持（在解析过程中进行替换）等缺点，另外该解析脚本还减小了包的大小，提高了解析效率，通过包装成一个自定义组件，简单易用且功能强大。
 ## 微信开发者工具链接 ##
-[代码片段](https://developers.weixin.qq.com/s/s2GpYCmn7A7p)
+[代码片段](https://developers.weixin.qq.com/s/GH25XDm77977)
