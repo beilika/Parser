@@ -12,7 +12,7 @@ function DomHandler(style,options) {
 function ParseClass(style) {
   var res = [];
   if (style) {
-    var classes = style.match(/[\.\#]*[^@]+?{.*?\}/g);
+    var classes = style.match(/[\.\#]*[^@]+?{[\s\S]*?\}/g);
     if (classes) {
       for (var item of classes) {
         var name = item.match(/^\s*?([^\.\#\s]+?)[\s\.\#\{]/);

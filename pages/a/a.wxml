@@ -1,2 +1,2 @@
 <!--pages/a/a.wxml-->
-<view style='text-align:center;'>a标签跳转测试</view>
+<view style='position:absolute;width:100%;height:100%;display: flex;justify-content: center;align-items: center;'>a标签跳转测试页面</view>
