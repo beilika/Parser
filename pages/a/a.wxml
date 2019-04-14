@@ -1,0 +1,2 @@
+<!--pages/a/a.wxml-->
+<view style='text-align:center;'>a标签跳转测试</view>
