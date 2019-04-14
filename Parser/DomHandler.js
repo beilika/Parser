@@ -84,7 +84,7 @@ DomHandler.prototype.onopentag = function(name, attrs) {
     if (!attrs.hasOwnProperty('ignore')) this.imgList.push(properties.attrs.src);
     if (!properties.attrs.style) properties.attrs.style = '';
     properties.attrs.style += ';max-width:100%;';
-  } else if (name == 'section') properties.name = 'div';
+  } else if (name == 'section' || name == 'body') properties.name = 'div';
   else if (name == 'font') {
     properties.name = 'label';
     if (!properties.attrs.style) properties.attrs.style = '';

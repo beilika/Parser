@@ -105,7 +105,7 @@
     | emsp | 中文字符空格大小 |
     | nbsp | 根据字体设置的空格大小 |  
   - 关于preview和selectable  
-    &emsp;&emsp;该属性为`true`时，是通过模板的循环解析实现图片的预览和链接的点击，这可能导致在排版较为复杂时显示不出正确的效果，此时可以将该属性设置为`{{false}}`，插件会直接用`rich-text`组件渲染，能达到更好的排版效果，提高渲染速度。另外插件支持对图片和链接进行单独设置，对于一些装饰性的图片，可以设置`ignore`属性（`<img ignore src="..." />`），这张图片将不会被预览；`a`标签也可以设置`ignore`属性，设置后将没有点击效果；但可能能有更好的效果。
+    &emsp;&emsp;该属性为`true`时，是通过模板的循环解析实现图片的预览和链接的点击，这可能导致在排版较为复杂时显示不出正确的效果，此时可以将该属性设置为`{{false}}`，插件会直接用`rich-text`组件渲染，能达到更好的排版效果，提高渲染速度。另外插件支持对图片和链接进行单独设置，对于一些装饰性的图片，可以设置`ignore`属性（`<img ignore src="..." />`），这张图片将不会被预览；`a`标签也可以设置`ignore`属性，设置后将没有点击效果；但可能能有更好的显示效果。
   - 回调函数
   
     | 名称 | 功能 | 说明 |
@@ -114,7 +114,7 @@
 ## 后端解析 ##
 为提高页面性能，可以在服务器端提前解析好`html`，该插件同样可以在`node.js`中使用（只需要`Parser`文件夹下的 `DomHandler.js`, `Parser.js`, `Tokenizer.js`即可）  
 具有的功能：
-1. 删除`script`, `head`, `html`, `body`, 注释等无用的标签
+1. 删除`script`, `head`, `html`, 注释等无用的标签
 2. 将`style`标签中的样式解析到各标签的`style`中，例如：
 ``` javascript
 const Parser=require('./Parser.js');
@@ -147,9 +147,11 @@ Parser(html,options).then(function(e){
 3. 在`img`标签的`style`中添加`max-width:100%;`，实现宽度自适应
 4. 将`section`标签用`div`取代
 5. 将`font`标签用`label`取代，并将`face`, `color`属性解析到`style`中
-6. 将`a`标签的`style`中添加`text-decoration: underline;color:#0000ff;`
+6. 将`a`标签的`style`中添加`color:#366092;`
 6. 对于该节点下含有`a`（`selectable`为`true`且没有设置`ignore`属性时）, `img`（`preview`为`true`且没有设置`ignore`属性时）, `video`标签的，`continue`的值会被设置为`true`（用于前端显示）
 7. 解析完成将返回一个形如`{ nodes:[Array], imgList:[Array] }`结构体,其中`nodes`数组可以直接应用于`rich-text`组件，整个结构体可以直接作为`Parser`组件的参数
 
 ## 原理简介 ##
 &emsp;&emsp;该插件结合了`WxParse`中模板循环的方式和`rich-text`组件，对于节点下有`img`, `video`, `a`标签的，使用模板循环的方式显示，否则直接通过`rich-text`组件显示，这样既解决了`WxParse`中过多的标签数（`rich-text`可以节省大量的标签），层数容易不够（对于大于20层的直接用`rich-text`解析，理论上可以显示无限层级），无法解析表格，一些组件显示格式不正确（`rich-text`可以解析出更好的效果）等缺点；也弥补了`rich-text`图片无法预览，无法显示视频，无法复制链接，部分标签不支持（在解析过程中进行替换）等缺点，另外该解析脚本还减小了包的大小，提高了解析效率，通过包装成一个自定义组件，简单易用且功能强大。
+## 微信开发者工具链接 ##
+[代码片段](https://developers.weixin.qq.com/s/s2GpYCmn7A7p)
